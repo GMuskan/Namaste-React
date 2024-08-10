@@ -20,3 +20,11 @@
     - Tree Shaking: remove unused code
     - Different dev and prod bundles
     
+# // JSX - (transpiled before it reaches the JS) - Parcel - Babel
+# // JSX => Babel transpiles it to React.createElement => ReactElement(JS Object) => HTMLElement(render)
+
+# config driven UI - website driven by data(like for swiggy app restaurant cards will be different based on location.)
+
+# React Hooks
+    -useState()
+    -useEffect()
