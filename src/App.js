@@ -1,4 +1,4 @@
-import React, { lazy, StrictMode, Suspense } from "react";
+import React, { lazy, StrictMode, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import {Header} from "./Components/Header";
 import {Body} from "./Components/Body";
@@ -14,9 +14,29 @@ import { RestaurantMenu } from "./Components/RestaurantMenu";
 const Instamart = lazy(async() => await import("./Components/Instamart"));
 
 const App = () => {
+    const [theme, setTheme] = useState(null);
+
+    useEffect(() => {
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+            setTheme("dark")
+        }else{
+            setTheme("light")
+        }
+    },[])
+    useEffect(() => {
+        if(theme === "dark"){
+            document.documentElement.classList.add("dark");
+        }else{
+            document.documentElement.classList.remove("dark");
+        }
+    },[theme])
+
+    const handleThemeSwitch  = () => {
+       setTheme(theme === "dark" ? "light" : "dark")
+    }
     return (
-        <div className="app">
-            <Header />
+        <div className="dark:bg-black">
+            <Header handleThemeSwitch={handleThemeSwitch} theme={theme}/>
             <Outlet/>
         </div>
     );
