@@ -1,5 +1,9 @@
+import { useContext } from "react"
+import { UserContext } from "../context/UserContext"
+
 export const About = () => {
+    const { loggedInUser } = useContext(UserContext);
     return(
-        <div>About my App</div>
+        <div>User: {loggedInUser}</div>
     )
 }

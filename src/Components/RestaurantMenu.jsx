@@ -6,7 +6,8 @@ import { RestaurantCategory } from "./RestaurantCategory";
 
 export const RestaurantMenu = () => {
     const {resId} = useParams();
-    const resInfo = useRestaurantMenu({resId});
+    const resInfo = useRestaurantMenu({ resId });
+    const [showIndex, setShowIndex] = useState([0]);
 
     if(resInfo === null) return <Shimmer/>
     const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;
@@ -16,7 +17,14 @@ export const RestaurantMenu = () => {
             <h1 className="font-bold m-6 text-2xl">{name}</h1>
             <p className="font-bold text-lg">{cuisines.join(",")} - {costForTwoMessage}</p>
             {/* categories accordion */}
-            {categories?.map((category) => <RestaurantCategory  key={category?.card?.card?.title} data={category?.card?.card}/>)}
+            {categories?.map((category, index) => (
+                //controlled component
+                <RestaurantCategory
+                    key={category?.card?.card?.title}
+                    data={category?.card?.card}
+                    showItems={showIndex?.includes(index) ? true : false}
+                    setShowIndex={() => showIndex?.includes(index) ? setShowIndex(showIndex?.filter(idx => idx!==index)) : setShowIndex([...showIndex, index])}
+                />))}
         </div>
     )
 }

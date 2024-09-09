@@ -7,6 +7,7 @@ import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
 import { Error } from "./Pages/Error";
 import { RestaurantMenu } from "./Components/RestaurantMenu";
+import { UserContext } from "./context/UserContext";
 // import { Instamart } from "./Components/Instamart";
 
 // Chunking / Code Splitting / Dynamic Bundling / Lazy Loading / On Demand Loading- are same things
@@ -15,6 +16,15 @@ const Instamart = lazy(async() => await import("./Components/Instamart"));
 
 const App = () => {
     const [theme, setTheme] = useState(null);
+    const [userName, setUserName] = useState("");
+
+    useEffect(() => {
+        //make an api call and send username and password
+        const data = {
+            name: "Muskan Gupta"
+        }
+        setUserName(data?.name)
+    },[])
 
     useEffect(() => {
         if(window.matchMedia('(prefers-color-scheme: dark)').matches){
@@ -35,10 +45,17 @@ const App = () => {
        setTheme(theme === "dark" ? "light" : "dark")
     }
     return (
-        <div className="dark:bg-black">
-            <Header handleThemeSwitch={handleThemeSwitch} theme={theme}/>
-            <Outlet/>
-        </div>
+        //default username will be displayed outside 
+        <UserContext.Provider value={{ loggedInUser: userName }}>
+            {/* Muskan Gupta */}
+            <div className="dark:bg-black">
+                <UserContext.Provider value={{ loggedInUser: "Swiggy User" }}>
+                    {/* Akshay Saini */}
+                    <Header handleThemeSwitch={handleThemeSwitch} theme={theme} />
+                </UserContext.Provider>
+                <Outlet/>
+            </div>
+        </UserContext.Provider>
     );
 };
 
