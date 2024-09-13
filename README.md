@@ -28,7 +28,18 @@
 # React Hooks
     -useState()
     -useEffect()
+        if no dependency array => useEffect is called on every render
+        if empty dependency array => useEffect is called on initial render(just once)
+        if dependency array is not empty => useEffect is called whenever dependencies changes
 
 # 2 types of routing in web app
     - Client side Routing
     - Server side Routing
+
+# Redux Toolkit
+    - Install @reduxjs/toolkit and react-redux
+    - Build our store
+    - Connect our store to our app
+    - Create slice
+    - dispatch(action)
+    - Selector

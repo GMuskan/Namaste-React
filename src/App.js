@@ -8,6 +8,10 @@ import { Contact } from "./Pages/Contact";
 import { Error } from "./Pages/Error";
 import { RestaurantMenu } from "./Components/RestaurantMenu";
 import { UserContext } from "./context/UserContext";
+import { Provider } from "react-redux";
+import { appStore } from "./store/AppStore";
+import { Cart } from "./Pages/Cart";
+
 // import { Instamart } from "./Components/Instamart";
 
 // Chunking / Code Splitting / Dynamic Bundling / Lazy Loading / On Demand Loading- are same things
@@ -45,17 +49,19 @@ const App = () => {
        setTheme(theme === "dark" ? "light" : "dark")
     }
     return (
-        //default username will be displayed outside 
-        <UserContext.Provider value={{ loggedInUser: userName }}>
-            {/* Muskan Gupta */}
-            <div className="dark:bg-black">
-                <UserContext.Provider value={{ loggedInUser: "Swiggy User" }}>
-                    {/* Akshay Saini */}
-                    <Header handleThemeSwitch={handleThemeSwitch} theme={theme} />
+        <Provider store={appStore}>
+            {/* default username will be displayed outside  */}
+            <UserContext.Provider value={{ loggedInUser: userName }}>
+                {/* Muskan Gupta */}
+                <div className="dark:bg-black">
+                    <UserContext.Provider value={{ loggedInUser: "Swiggy User" }}>
+                        {/* Akshay Saini */}
+                        <Header handleThemeSwitch={handleThemeSwitch} theme={theme} />
+                    </UserContext.Provider>
+                    <Outlet/>
+                </div>
                 </UserContext.Provider>
-                <Outlet/>
-            </div>
-        </UserContext.Provider>
+        </Provider>
     );
 };
 
@@ -83,6 +89,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu/>
+            },
+            {
+                path: "/cart",
+                element: <Cart/>
             }
         ],
         errorElement: <Error/>
