@@ -43,3 +43,19 @@
     - Create slice
     - dispatch(action)
     - Selector
+
+# Types of Testing
+    - Unit Testing
+    - Integration Testing
+    - End to End Testing (e2e)
+
+# Setting up testing
+    - Install react testing library
+    - install jest
+    - install babel dependicies for using jest
+    - configure babel in babel.config.js file (this babel configuration for testing will be conflicted with parcel's babel configuration so to make our new babel configuration work(to disable default babel transpilation) we need to modify parcel configuration in .parcelrc)
+    - jest configuration by npm jest --init
+    - install jsdom library
+    - install @babel/preset-react - to make JSX work in test cases
+    - Include @babel/preset-react inside babel config
+    - install @testing-library/jest-dom
