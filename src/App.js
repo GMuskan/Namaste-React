@@ -9,7 +9,7 @@ import { Error } from "./Pages/Error";
 import { RestaurantMenu } from "./Components/RestaurantMenu";
 import { UserContext } from "./context/UserContext";
 import { Provider } from "react-redux";
-import { appStore } from "./store/AppStore";
+import { appStore } from "./store/appStore";
 import { Cart } from "./Pages/Cart";
 
 // import { Instamart } from "./Components/Instamart";

@@ -12,10 +12,9 @@ export const Header = ({handleThemeSwitch, theme}) => {
 
     //Subscribing to the store using a selector
     const cartItems = useSelector((store) => store?.cart?.items);
-    console.log(cartItems);
 
     return (
-        <div className="flex justify-between items-center shadow-xl shadow-gray-200 dark:text-white shadow-white">
+        <div className="flex justify-between items-center shadow-xl shadow-gray-200 dark:text-white">
             <div>
                 <img className="w-48 p-4" src={LOGO_URL} />
             </div>
