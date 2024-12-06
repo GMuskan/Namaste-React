@@ -22,6 +22,7 @@ export const Body = () => {
         <div className="m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             placeholder="Search"
             className="p-2 bg-white border border-slate-300 rounded-sm text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
             value={searchText}
@@ -47,9 +48,9 @@ export const Body = () => {
             className="rounded-lg px-4 py-2 bg-gray-200"
             onClick={() => {
               const filteredList = listOfRestaurants?.filter(
-                (res) => res?.info?.avgRating > 4
+                (res) => res?.info?.avgRating >= 4.5
               );
-              setListOfRestraunt(filteredList);
+              setFilteredRestaurant(filteredList);
             }}
           >
             Top Rated Restaurants
