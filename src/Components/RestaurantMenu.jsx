@@ -7,7 +7,7 @@ import { RestaurantCategory } from "./RestaurantCategory";
 export const RestaurantMenu = () => {
     const {resId} = useParams();
     const resInfo = useRestaurantMenu({ resId });
-    const [showIndex, setShowIndex] = useState([0]);
+    const [showIndex, setShowIndex] = useState([]);
 
     if(resInfo === null) return <Shimmer/>
     const { name, cuisines, costForTwoMessage } = resInfo?.cards[2]?.card?.card?.info;

@@ -28,7 +28,7 @@ describe("Test Cases for Header Component", () => {
             </BrowserRouter>
         )
     
-        const cartItems = screen.getByText("Cart(0)"); //const cartItems = screen.getByText("/Cart/"); regex will also work
+        const cartItems = screen.getByText("Cart - (0 items)"); //const cartItems = screen.getByText("/Cart/"); regex will also work
         expect(cartItems).toBeInTheDocument();
     });
     

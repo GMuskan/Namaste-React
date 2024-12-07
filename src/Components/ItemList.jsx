@@ -11,7 +11,7 @@ export const ItemList = ({ items }) => {
     return(
         <div> 
             {items?.map((item) => (
-                <div key={item?.card?.info?.id} className="p-4 m-4 border=gray-200 border-b-2 text-left flex justify-between h-fit">
+                <div data-testid="foodItems" key={item?.card?.info?.id} className="p-4 m-4 border=gray-200 border-b-2 text-left flex justify-between h-fit">
                     <div className="py-2 w-9/12">
                         {item.card.info.isBestseller &&
                             <div className="font-bold text-orange-400 italic">

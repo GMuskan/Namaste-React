@@ -25,7 +25,7 @@ export const Header = ({handleThemeSwitch, theme}) => {
                     <li className="px-4"><Link to="/about">About Us</Link></li>
                     <li className="px-4"><Link to="/contact">Contact Us</Link></li>
                     <li className="px-4"><Link to="/instamart">Instamart</Link></li>
-                    <li className="px-4 font-bold text-xl"><Link to="/cart">Cart({cartItems?.length})</Link></li>
+                    <li className="px-4 font-bold text-xl"><Link to="/cart">Cart - ({cartItems.length} items)</Link></li>
                     <button className="px-4" onClick={handleThemeSwitch}>{theme === "light" ? "Dark" : "Light"} Mode</button>
                     <button className="px-4" onClick={() => { btnName === "Login" ? setBtnName("Logout") : setBtnName("Login") }}>{btnName}</button>
                     <li className="px-4">{loggedInUser}</li>
